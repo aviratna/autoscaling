@@ -1,2 +1,2 @@
-# autoscaling
+# Autoscaling
 Autoscaling for container platform
