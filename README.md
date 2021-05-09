@@ -74,7 +74,7 @@ Do the docker inspect using API to search for other scaled container based on la
 Update the record in Autoscale History for Scale Down Tracking 
 Update the Database for Audit purpose.
 
-#===========================Traefik: Load Balancer Scale Up=================
+#===========================Traefik: Load Balancer Scale Up==================
 Count No of records
 Inspect the container to get the Docker Label, cpu, memory, volume details required for docker run commands 
 Based on number of container with that service name scale up and scale down 
