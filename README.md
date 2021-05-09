@@ -86,7 +86,7 @@ Inspect the container to get the Docker Label, cpu, memory, volume details requi
 Based on number of container with that service name scale down 
 Insert the record in Autoscale History
 
-#================HAProxy Load balancer Scale Up============================
+#================HAProxy Load balancer Scale Up=============================
 Inspect the container to get the Docker Label, cpu, memory, volume details required for docker run commands
 Get HAProxy label passed to Container
 Update the HAProxy Configuration Dynamically 
