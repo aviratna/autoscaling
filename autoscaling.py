@@ -27,7 +27,7 @@ read scaledown_containerid cnx.cursor (buffered=True)
 
 ##Connection to MongoDB
 mongo client- MongoClient ()
-mongo_client- MongoClient (mongodb://<IPAddress>:27017/')
+mongo_client- MongoClient (mongodb://<IPAddress>:<port>/')
 db mongo client.test database
 
 
@@ -166,11 +166,11 @@ for x in autoscale_request:
     vch_short_name = VCH_Name.split("")
     VCH Name vch short name [0]
 
-    docker host str VCH_Name +atr("<DOCKER_API>:2376")
+    docker host str VCH_Name +atr("<DOCKER_API>:<docker tls port>")
     docker cert path str-st("/") +VCH Name vch_cert_file-str("/") +VCH_Name+str("/")+"cert.pem"    
     vch_key_file-str("/")+VCH_Name+str("/")+"key.pem"
     vch_ca_file-str("/")+VCH_Name+str("/")+"ca.pem" 
-    vch base url-str("https://")+VCH Name+str("DOCKER_API:2376")
+    vch base url-str("https://")+VCH Name+str("DOCKER_API:<docker tls port>")
     
     os.environ["DOCKER API VERSION")="1.25"
     os.environ("DOCKER TLS VERIFY"1="1"
