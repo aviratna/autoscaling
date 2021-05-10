@@ -16,7 +16,7 @@ urllib3.disable warnings (urllib3.exceptions. InsecureRequestWarning)
 
 
 ##Connection to MySQL Database
-cnx mysql.connector.connect (user='admin', password=****, host='vm1', database='autoscale')
+cnx mysql.connector.connect (user='<user>', password=****, host='vm1', database='<db-name>')
 cursor = cnx.cursor()
 readcursor cnx.cursor (buffered=True)
 readvchinfo = cnx.cursor (buffered=True)
