@@ -1,5 +1,5 @@
 # Autoscaling
-Autoscaling for container platform
+Autoscaling for opensource container platform like VMWare Integrated container
 
 There is a need for autoscaling solution which is configurable, data driven, policy based, supports multi-cloud which can be configured with parameters other than CPU, Memory etc
 
