@@ -1,5 +1,5 @@
 # Autoscaling
-Autoscaling for opensource container platform like VMWare Integrated container
+Autoscaling for opensource container platform.
 
 It can be used as an extension for opensource kubernetes autoscaling and Ingress. 
 
