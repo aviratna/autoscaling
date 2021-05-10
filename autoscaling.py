@@ -166,7 +166,7 @@ for x in autoscale_request:
     vch_short_name = VCH_Name.split("")
     VCH Name vch short name [0]
 
-    docker host str VCH_Name +atr(".dev.cloudnow.dbs.com:2376")
+    docker host str VCH_Name +atr("<DOCKER_API>:2376")
     docker cert path str-st("/") +VCH Name vch_cert_file-str("/") +VCH_Name+str("/")+"cert.pem"    
     vch_key_file-str("/")+VCH_Name+str("/")+"key.pem"
     vch_ca_file-str("/")+VCH_Name+str("/")+"ca.pem" 
