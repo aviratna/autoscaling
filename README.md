@@ -1,7 +1,7 @@
 # Autoscaling
 Autoscaling for opensource container platform like VMWare Integrated container
 
-It can be used as an extension for kubernetes autoscaling and Ingress. 
+It can be used as an extension for opensource kubernetes autoscaling and Ingress. 
 
 There is a need for autoscaling solution which is configurable, data driven, policy based, supports multi-cloud which can be configured with parameters other than CPU, Memory etc
 
