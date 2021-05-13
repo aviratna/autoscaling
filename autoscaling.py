@@ -16,19 +16,19 @@ urllib3.disable warnings (urllib3.exceptions. InsecureRequestWarning)
 
 
 ##Connection to MySQL Database
-cnx mysql.connector.connect (user='<user>', password=****, host='vm1', database='<db-name>')
+cnx = mysql.connector.connect (user='<user>', password=****, host='vm1', database='<db-name>')
 cursor = cnx.cursor()
 readcursor cnx.cursor (buffered=True)
 readvchinfo = cnx.cursor (buffered=True)
-readvicrates cnx.cursor (buffered=True)
-read autoscale_history cnx.cursor (buffered=True)
-read scaledown_containerid cnx.cursor (buffered=True)
+readvicrates = cnx.cursor (buffered=True)
+read autoscale_history = cnx.cursor (buffered=True)
+read scaledown_containerid = cnx.cursor (buffered=True)
 
 
 ##Connection to MongoDB
-mongo client- MongoClient ()
-mongo_client- MongoClient (mongodb://<IPAddress>:<port>/')
-db mongo client.test database
+mongo_client = MongoClient()
+mongo_client = MongoClient (mongodb://<IPAddress>:<port>/')
+db = mongo_client.test.database
 
 
 
@@ -59,10 +59,10 @@ for x in autoscale_request:
 
     if autoscale_action "service availability":
         request_id = x['_id"] 
-        VCH_Name_full x['metricset']['host']
+        VCH_Name_full = x['metricset']['host']
         event = x['event']['dataset']
-        container status x['docker']['event']['status']
-        container_image= x['docker']['event']['from'] container_name = x['docker']['event']['actor']['attributes']['name']
+        container status = x['docker']['event']['status']
+        container_image = x['docker']['event']['from'] container_name = x['docker']['event']['actor']['attributes']['name']
         #container_trefik_status=x['docker'1 ['event']['actor']['attributes']['traefik enable'l
         container_service_availability = x['docker']['event']['actor']['attributes']['service availability']
         container_id=x['docker']['event']['actor']['id']
@@ -72,33 +72,33 @@ for x in autoscale_request:
         query=x['id']
         request_id = {"_id" :query)     
         container_id = x['docker']['container']['id']
-        VCH_Name full x['metricset']['host']
+        VCH_Name full = x['metricset']['host']
         total_cpu usage = x['metric_docker']['cpu']['total']['pct_avg']
         #autoscale_service_name = x['autoscale_service_name']
         autoscale_max_instances_str = x['autoscale_max_instances']
-        autoscale max instances int (autoscale max instances str) 
+        autoscale_max_instances = int(autoscale_max_instances_str) 
         policy name x['vic policy_name']
 
-        container image x['docker.container. image']
+        container image = x['docker.container.image']
 
     if autoscale action="scale_down":
         query = x[' id']
-        request id="id" :query)
+        request_id=("id":query)
         container_id=x['docker']['container']['id'] 
         VCH_Name_full = x['metricset']['host']
         total_cpu_usage = x['metric_docker']['cpu']['total']['pct avg']
         autoscale_service_name=x['autoscale_service_name']
-        autoscale_min_instances str = x['autoscale_min_instances']
-        autoscale_min_instances int = (autoscale_min_instances_str) 
+        autoscale_min_instances_str = x['autoscale_min_instances']
+        autoscale_min_instances = int(autoscale_min_instances_str) 
         policy name = x['vic policy_name']
 
     if autoscale action="scale_up_node":
         alert_service_name = x['alert_service_name']
-        VCH Name full x['metricset']['host'] 
+        VCH_Name_full = x['metricset']['host'] 
         autoscale_max_instances_str = x['autoscale_max instances']
-        autoscale_max_instances_int = (autoscale_max_instances str) 
+        autoscale_max_instances_int = int(autoscale_max_instances_str) 
         #autoscale_min_instances str = x['autoscale min instances'1
-        autoscale_min_instances_int = (autoscale_min instances str)
+        autoscale_min_instances_int = (autoscale_min instances_str)
 
         policy_name=x['vic_policy_name']
         query=x['id']
@@ -157,20 +157,20 @@ for x in autoscale_request:
 
 
     VCH_Name=vchinfo[0]
-    VCH Network-vchinfo[1]
-    VCH Port-vchinfo[2]
+    VCH Network = vchinfo[1]
+    VCH_Port = vchinfo[2]
     VCH_LOB=vchinfo[3]
-    VCH_AppCode vehinfo[4]
-    VCH PCCodevchinfo[5]
-    cvm storage confvchinfo[6]
+    VCH_AppCode = vehinfo[4]
+    VCH_PCCodevchinfo[5]
+    cvm_storage_confvchinfo[6]
     vch_short_name = VCH_Name.split("")
-    VCH Name vch short name [0]
+    VCH Name = vch_short_name[0]
 
-    docker host str VCH_Name +atr("<DOCKER_API>:<docker tls port>")
-    docker cert path str-st("/") +VCH Name vch_cert_file-str("/") +VCH_Name+str("/")+"cert.pem"    
-    vch_key_file-str("/")+VCH_Name+str("/")+"key.pem"
-    vch_ca_file-str("/")+VCH_Name+str("/")+"ca.pem" 
-    vch base url-str("https://")+VCH Name+str("DOCKER_API:<docker tls port>")
+    docker_host = str(VCH_Name) +str("<DOCKER_API>:<docker tls port>")
+    docker_cert_path_str = str("/") +VCH Name vch_cert_file-str("/") +VCH_Name+str("/")+"cert.pem"    
+    vch_key_file = str("/")+VCH_Name+str("/")+"key.pem"
+    vch_ca_file = str("/")+VCH_Name+str("/")+"ca.pem" 
+    vch_base_url = str("https://")+VCH Name+str("DOCKER_API:<docker tls port>")
     
     os.environ["DOCKER API VERSION")="1.25"
     os.environ("DOCKER TLS VERIFY"1="1"
@@ -203,8 +203,8 @@ for x in autoscale_request:
 
         container_image = container_inspect['Config']['Image'] 
         docker_labels = container_inspect['Config']['Labels']
-        docker network container inspect['HostConfig']['NetworkMode']
-        autoscale_service_name-docker labels['vic service_name']
+        docker_network  = container_inspect['HostConfig']['NetworkMode']
+        autoscale_service_name = docker_labels['vic service_name']
 
     ## Read Docker Labels
     # autoacale.min instances-docker labels("min instances"]
