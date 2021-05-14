@@ -19,7 +19,7 @@ urllib3.disable warnings (urllib3.exceptions. InsecureRequestWarning)
 cnx = mysql.connector.connect (user='<user>', password=****, host='vm1', database='<db-name>')
 cursor = cnx.cursor()
 readcursor cnx.cursor (buffered=True)
-readvchinfo = cnx.cursor (buffered=True)
+readremote_dockerinfo = cnx.cursor (buffered=True)
 readvicrates = cnx.cursor (buffered=True)
 read autoscale_history = cnx.cursor (buffered=True)
 read scaledown_containerid = cnx.cursor (buffered=True)
@@ -59,7 +59,7 @@ for x in autoscale_request:
 
     if autoscale_action "service availability":
         request_id = x['_id"] 
-        VCH_Name_full = x['metricset']['host']
+        remote_docker_Name_full = x['metricset']['host']
         event = x['event']['dataset']
         container status = x['docker']['event']['status']
         container_image = x['docker']['event']['from'] container_name = x['docker']['event']['actor']['attributes']['name']
@@ -72,7 +72,7 @@ for x in autoscale_request:
         query=x['id']
         request_id = {"_id" :query)     
         container_id = x['docker']['container']['id']
-        VCH_Name full = x['metricset']['host']
+        remote_docker_Name full = x['metricset']['host']
         total_cpu usage = x['metric_docker']['cpu']['total']['pct_avg']
         #autoscale_service_name = x['autoscale_service_name']
         autoscale_max_instances_str = x['autoscale_max_instances']
@@ -85,7 +85,7 @@ for x in autoscale_request:
         query = x[' id']
         request_id=("id":query)
         container_id=x['docker']['container']['id'] 
-        VCH_Name_full = x['metricset']['host']
+        remote_docker_Name_full = x['metricset']['host']
         total_cpu_usage = x['metric_docker']['cpu']['total']['pct avg']
         autoscale_service_name=x['autoscale_service_name']
         autoscale_min_instances_str = x['autoscale_min_instances']
@@ -94,7 +94,7 @@ for x in autoscale_request:
 
     if autoscale action="scale_up_node":
         alert_service_name = x['alert_service_name']
-        VCH_Name_full = x['metricset']['host'] 
+        remote_docker_Name_full = x['metricset']['host'] 
         autoscale_max_instances_str = x['autoscale_max instances']
         autoscale_max_instances_int = int(autoscale_max_instances_str) 
         #autoscale_min_instances str = x['autoscale min instances'1
@@ -106,7 +106,7 @@ for x in autoscale_request:
 
     if autoscale action="scale_down_node": 
         alert_service_name = x['alert_service_name']
-        VCH Name full x['metricaet']['host']
+        remote_docker Name full x['metricaet']['host']
         autoscale max instances_str = x['autoscale_max_instances'] 
         autoscale_max_instances = int(autoscale_max_instances str)
         policy_name = x['vic_policy_name']
@@ -117,7 +117,7 @@ for x in autoscale_request:
 
     if autoscale action "scale_up_service":
         alert service name = x['alert service name']
-        VCH Name full = x['metricnet']['host']
+        remote_docker Name full = x['metricnet']['host']
         autoscale max_instances str = x['autoscale max instances']
         autoscale max instances int (autoscale_max_instances str)
         policy_name=x['vic_policy_name']
@@ -127,7 +127,7 @@ for x in autoscale_request:
 
     if autoscale action="scale_down_service":
         alert service name=x['alert_service_name'] 
-        VCH_Name_full xl'metricset']['host']
+        remote_docker_Name_full xl'metricset']['host']
         policy_name = x['vic_policy name']
         query=x['_id']
         request id=("_id":query)
@@ -136,7 +136,7 @@ for x in autoscale_request:
 
     if autoscale action "haproxy_scale_up": 
         alert service name x['alert service name']
-        VCH Name full x['metricset']['host'] 
+        remote_docker Name full x['metricset']['host'] 
         autoscale_max_instances_str=x['autoscale_max_instances'] 
         autoscale_max_instances = int(autoscale_max_instances_str) 
         policy name=x['vic_policy_name']
@@ -146,31 +146,31 @@ for x in autoscale_request:
 
     #Container frontend rule
     #Container backend rule
-    VCH_Name_array = VCH_Name_full.split("")
-    VCH_Name = VCH_Name_array[0]
+    remote_docker_Name_array = remote_docker_Name_full.split("")
+    remote_docker_Name = remote_docker_Name_array[0]
     
     
-    #Get the VCH details
-    get_vch_list-select VCH_Name, VCH Network, VCH Port, LOB, AppCode, PCCode, CVM Storage from vic_vch_info where VCB Name to
-    readvchinfo.execute (get_vch list, (VCH Name,))
-    vchinfo=readvchinfo.fetchone ()
+    #Get the remote_docker details
+    get_remote_docker_list-select remote_docker_Name, remote_docker Network, remote_docker Port, LOB, AppCode, PCCode, CVM Storage from vic_remote_docker_info where VCB Name to
+    readremote_dockerinfo.execute (get_remote_docker list, (remote_docker Name,))
+    remote_dockerinfo=readremote_dockerinfo.fetchone ()
 
 
-    VCH_Name=vchinfo[0]
-    VCH Network = vchinfo[1]
-    VCH_Port = vchinfo[2]
-    VCH_LOB=vchinfo[3]
-    VCH_AppCode = vehinfo[4]
-    VCH_PCCodevchinfo[5]
-    cvm_storage_confvchinfo[6]
-    vch_short_name = VCH_Name.split("")
-    VCH Name = vch_short_name[0]
+    remote_docker_Name=remote_dockerinfo[0]
+    remote_docker Network = remote_dockerinfo[1]
+    remote_docker_Port = remote_dockerinfo[2]
+    remote_docker_LOB=remote_dockerinfo[3]
+    remote_docker_AppCode = vehinfo[4]
+    remote_docker_PCCoderemote_dockerinfo[5]
+    cvm_storage_confremote_dockerinfo[6]
+    remote_docker_short_name = remote_docker_Name.split("")
+    remote_docker Name = remote_docker_short_name[0]
 
-    docker_host = str(VCH_Name) +str("<DOCKER_API>:<docker tls port>")
-    docker_cert_path_str = str("/") +VCH Name vch_cert_file-str("/") +VCH_Name+str("/")+"cert.pem"    
-    vch_key_file = str("/")+VCH_Name+str("/")+"key.pem"
-    vch_ca_file = str("/")+VCH_Name+str("/")+"ca.pem" 
-    vch_base_url = str("https://")+VCH Name+str("DOCKER_API:<docker tls port>")
+    docker_host = str(remote_docker_Name) +str("<DOCKER_API>:<docker tls port>")
+    docker_cert_path_str = str("/") +remote_docker Name remote_docker_cert_file-str("/") +remote_docker_Name+str("/")+"cert.pem"    
+    remote_docker_key_file = str("/")+remote_docker_Name+str("/")+"key.pem"
+    remote_docker_ca_file = str("/")+remote_docker_Name+str("/")+"ca.pem" 
+    remote_docker_base_url = str("https://")+remote_docker Name+str("DOCKER_API:<docker tls port>")
     
     os.environ["DOCKER API VERSION")="1.25"
     os.environ("DOCKER TLS VERIFY"1="1"
@@ -183,15 +183,15 @@ for x in autoscale_request:
 
     #print (Docker API)
 
-    ##TLS Configuration for accensing VCH using Certificate
+    ##TLS Configuration for accensing remote_docker using Certificate
 
-    tls_config = docker.cls.TLSConfig(client_cert-(vch_cert file, vch key file), ca_cert=vch_ca_file,ssl_version='TLSv1_2')
+    tls_config = docker.cls.TLSConfig(client_cert-(remote_docker_cert file, remote_docker key file), ca_cert=remote_docker_ca_file,ssl_version='TLSv1_2')
 
     #client
-    docker_cli = docker.DockerClient (base_url=vch_base_url, tls=tls_config)
+    docker_cli = docker.DockerClient (base_url=remote_docker_base_url, tls=tls_config)
     
     #API
-    docker_api=docker.APIClient(base_url=vch_base_url, tis=tis_config, version="1.23")
+    docker_api=docker.APIClient(base_url=remote_docker_base_url, tis=tis_config, version="1.23")
 
     ##Inspect the container to get the Docker Label, cpu, memory, volume details required for docker run commande
 
@@ -239,7 +239,7 @@ for x in autoscale_request:
 
     ##===================Policy Type: Scale Up==========
     #Take the min, max dynamically. Based on if condition of stats.
-    # Check for Min Max value for number of container created against db as checking for container with same docker label in different VCH will be more cycle
+    # Check for Min Max value for number of container created against db as checking for container with same docker label in different remote_docker will be more cycle
     #Or Check for Min Max value captured through ElastAlert portal. And check for
 
     # Create the Containers
@@ -267,9 +267,9 @@ for x in autoscale_request:
                 container docker cli.containers.run(container_image,network=docker_network,labels=docker_labels,detach=True)
                 container.reload()
                 ip=container.attrs("NetworkSettings"] ["Networks"] [docker network] ["IPAddress"] ## Insert the record in Autoscale History
-                add request("INSERT INTO vic_autoscale_history " "(vch_name,containerod,policy_rule_applied,cpu_spike,container_status,service_name)"
+                add request("INSERT INTO vic_autoscale_history " "(remote_docker_name,containerod,policy_rule_applied,cpu_spike,container_status,service_name)"
                 "VALUE (%s,%s,%s,%s,%s,%s)")
-                add data = (VCH Name, container.id, policy_name, str (total_cpu usage). "running", autoscale_service_name]
+                add data = (remote_docker Name, container.id, policy_name, str (total_cpu usage). "running", autoscale_service_name]
                 cursor execute (add request, add data)
                 cnx.commut()
 
@@ -361,18 +361,18 @@ for x in autoscale_request:
                     auto_num= auto num. replace ("-","")
                     auto_num= auto_num(0:12)
                     CVM Name vic naming convention + auto_num
-                    container = docker_cli.containers.run (container image, network-VCH Network,labels=docker_labels, name=cVM_Name, tty=True, detac=True)
+                    container = docker_cli.containers.run (container image, network-remote_docker Network,labels=docker_labels, name=cVM_Name, tty=True, detac=True)
                     container.reload()
                 else:
-                    container docker cli.containers.run (container_image, network-VCH Network, labels-docker labels, tty-True, detach=True) 
+                    container docker cli.containers.run (container_image, network-remote_docker Network, labels-docker labels, tty-True, detach=True) 
                     container,reload()
-                ip-container.attrs ["NetworkSettings"] ["Networks"][VCH_Network] ["IPAddress"]          
+                ip-container.attrs ["NetworkSettings"] ["Networks"][remote_docker_Network] ["IPAddress"]          
                 # Insert the record in Autoscale History
 
-                add_request ("INSERT INTO vic_autoscale_history" (vch name, containerid, policy rule_applied,container_status,service_name)" 
+                add_request ("INSERT INTO vic_autoscale_history" (remote_docker name, containerid, policy rule_applied,container_status,service_name)" 
                 "VALUES (%s,%s,%s,%s)")
 
-                add data (VCH_Name, container.id,policy_name, "running", alert_service_name)
+                add data (remote_docker_Name, container.id,policy_name, "running", alert_service_name)
                 cursor.execute (add_request, add data)
                 cnx.commit()
 
@@ -447,9 +447,9 @@ for x in autoscale_request:
             haproxy_node_count = num CVM running+1
             
             if num cVM running < autoscale max_instances:
-                container docker cli.containers.run(container_image, network-VCH Network, labels=docker_labels, detach-True)
+                container docker cli.containers.run(container_image, network-remote_docker Network, labels=docker_labels, detach-True)
                 container.reload() 
-                ip = container.attra("NetworkSettings" ["Networks"][VCH Network) ["IPAddress"]
+                ip = container.attra("NetworkSettings" ["Networks"][remote_docker Network) ["IPAddress"]
 
                 #Update the HAProxy Configuration Dynamically 
                 haproxy_sock socket.socket (socket. AF INET, socket.SOCK_STREAM)
@@ -487,8 +487,8 @@ for x in autoscale_request:
 
                     ## Insert the record in Autoscale History:
                     
-                    add_request-("INSERT INTO vic_autoscale_history" (vch_name, containerid, policy rule_applied, container_status, service_name)" VALUES (%s,%s,%s,%s)")
-                    add data = (VCH Hame, container.id, policy name, "running", alert_service_name)
+                    add_request-("INSERT INTO vic_autoscale_history" (remote_docker_name, containerid, policy rule_applied, container_status, service_name)" VALUES (%s,%s,%s,%s)")
+                    add data = (remote_docker Hame, container.id, policy name, "running", alert_service_name)
                     cursor.execute (add request, add data)
                     cnx.commit()
 
@@ -505,4 +505,4 @@ for x in autoscale_request:
 
 cursor.close()
 cnx.close()
-readvchinfo.close()
+readremote_dockerinfo.close()
