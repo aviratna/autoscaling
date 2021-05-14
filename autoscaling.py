@@ -77,11 +77,11 @@ for x in autoscale_request:
         #autoscale_service_name = x['autoscale_service_name']
         autoscale_max_instances_str = x['autoscale_max_instances']
         autoscale_max_instances = int(autoscale_max_instances_str) 
-        policy name x['vic policy_name']
+        policy_name = x['vic policy_name']
 
-        container image = x['docker.container.image']
+        container_image = x['docker.container.image']
 
-    if autoscale action="scale_down":
+    if autoscale_action="scale_down":
         query = x[' id']
         request_id=("id":query)
         container_id=x['docker']['container']['id'] 
@@ -90,9 +90,9 @@ for x in autoscale_request:
         autoscale_service_name=x['autoscale_service_name']
         autoscale_min_instances_str = x['autoscale_min_instances']
         autoscale_min_instances = int(autoscale_min_instances_str) 
-        policy name = x['vic policy_name']
+        policy_name = x['vic policy_name']
 
-    if autoscale action="scale_up_node":
+    if autoscale_action="scale_up_node":
         alert_service_name = x['alert_service_name']
         remote_docker_Name_full = x['metricset']['host'] 
         autoscale_max_instances_str = x['autoscale_max instances']
@@ -104,43 +104,43 @@ for x in autoscale_request:
         query=x['id']
         request_id = {"_id" :query)
 
-    if autoscale action="scale_down_node": 
+    if autoscale_action="scale_down_node": 
         alert_service_name = x['alert_service_name']
         remote_docker Name full x['metricaet']['host']
-        autoscale max instances_str = x['autoscale_max_instances'] 
+        autoscale_max_instances_str = x['autoscale_max_instances'] 
         autoscale_max_instances = int(autoscale_max_instances str)
         policy_name = x['vic_policy_name']
         query = x['id'] 
         request_id = {"_id": query}
-        autoscale min instances str = ['autoscale min instances']
-        autoscale min instances = int(autoscale_min_instances_str)
+        autoscale_min_instances str = ['autoscale min instances']
+        autoscale_min_instances = int(autoscale_min_instances_str)
 
-    if autoscale action "scale_up_service":
-        alert service name = x['alert service name']
-        remote_docker Name full = x['metricnet']['host']
-        autoscale max_instances str = x['autoscale max instances']
-        autoscale max instances int (autoscale_max_instances str)
+    if autoscale_action "scale_up_service":
+        alert_service_name = x['alert service name']
+        remote_docker_Name_full = x['metricnet']['host']
+        autoscale_max_instances_str = x['autoscale_max_instances']
+        autoscale_max_instances = int(autoscale_max_instances_str)
         policy_name=x['vic_policy_name']
         query x['_id']
         request id= {"_id" :query}
-        vic naming convention x['vic naming convention']
+        vic_naming_convention = x['vic naming convention']
 
-    if autoscale action="scale_down_service":
-        alert service name=x['alert_service_name'] 
-        remote_docker_Name_full xl'metricset']['host']
-        policy_name = x['vic_policy name']
+    if autoscale_action="scale_down_service":
+        alert_service_name=x['alert_service_name'] 
+        remote_docker_Name_full = x['metricset']['host']
+        policy_name = x['vic_policy_name']
         query=x['_id']
-        request id=("_id":query)
-        autoscale min instances str x['autoscale min instances']
-        autoscale min instances int (autoscale_min_instances_str)
+        request_id=("_id":query)
+        autoscale_min_instances_str = x['autoscale_min_instances']
+        autoscale_min_instances = int(autoscale_min_instances_str)
 
-    if autoscale action "haproxy_scale_up": 
-        alert service name x['alert service name']
-        remote_docker Name full x['metricset']['host'] 
+    if autoscale_action "haproxy_scale_up": 
+        alert_service_name = x['alert_service_name']
+        remote_docker_Name_full = x['metricset']['host'] 
         autoscale_max_instances_str=x['autoscale_max_instances'] 
         autoscale_max_instances = int(autoscale_max_instances_str) 
         policy name=x['vic_policy_name']
-        query x['_id']
+        query = x['_id']
         request_id = {"_id" :query)
 
 
@@ -151,7 +151,7 @@ for x in autoscale_request:
     
     
     #Get the remote_docker details
-    get_remote_docker_list-select remote_docker_Name, remote_docker Network, remote_docker Port, LOB, AppCode, PCCode, CVM Storage from vic_remote_docker_info where VCB Name to
+    get_remote_docker_list = select remote_docker_Name, remote_docker Network, remote_docker Port, LOB, AppCode, PCCode, CVM Storage from vic_remote_docker_info where remote_docker_Name = remote_docker
     readremote_dockerinfo.execute (get_remote_docker list, (remote_docker Name,))
     remote_dockerinfo=readremote_dockerinfo.fetchone ()
 
@@ -180,7 +180,6 @@ for x in autoscale_request:
 
 
 
-
     #print (Docker API)
 
     ##TLS Configuration for accensing remote_docker using Certificate
@@ -195,7 +194,7 @@ for x in autoscale_request:
 
     ##Inspect the container to get the Docker Label, cpu, memory, volume details required for docker run commande
 
-    if autoscale action - "scale_up_node" and autoscale action = "scale down node" and autoscale action="scale_up_service and autoscale "scale_down service and autoscale action - "service availability" and autoscale action = "haproxy_scale_up": 
+    if autoscale_action = "scale_up_node" and autoscale_action = "scale_down_node" and autoscale_action="scale_up_service" and autoscale_action = "scale_down_service" and autoscale_action = "service_availability" and autoscale_action = "haproxy_scale_up": 
         container_inspect = docker_api.inspect_container(container_id)
         #cpu- container inspect'HostConfig']['CpusetCpus']
         #memory container_inspect['HostConfig']['Memory']
@@ -228,11 +227,11 @@ for x in autoscale_request:
     # Start the Container if stopped and service availability
     
     ##Add AND Condition for Event as Stop
-    if autoscale action service availability":"
-        docker api.start (container id)
-        search autoscale request - "id": ["$regex":request id))
-        updated autoscale status =("set":{"Alert Status":"processed")) 
-        db.autoscale_request update one (search_autoscale_request, updated autoscale status)
+    if autoscale_action = service availability":"
+        docker_api.start (container id)
+        search_autoscale_request - "id": ["$regex":request id))
+        updated_autoscale_status =("set":{"Alert Status":"processed")) 
+        db.autoscale_request = update_one(search_autoscale_request, updated autoscale status)
 
     #if autoacale action="service availability" AND event "die" 
     # create the container from sane image
@@ -245,15 +244,15 @@ for x in autoscale_request:
     # Create the Containers
     #container
 
-    client.containers.run(vic image, cpuset_cpus-CPU, mem limit-MEMORY, labels docker_labels, network VCB Network, detach-True, volumea [vol_sdk_param])
+    client.containers.run(vic_image, cpuset_cpus = CPU, mem_limit = MEMORY, labels = docker_labels, network = remote_docker_Network, detach = True, volume[vol_sdk_param])
 
-    if autoscale action "scale_up": 
+    if autoscale action = "scale_up": 
         #no_of_instances running = 0
         #filter_label = "vic_service_name=" + "
         #container_list_array = docker_api.containers(filter={"label":(filter_label)})
         #num_cVM_running = len(container_list_array)
         
-        while num CVM_running < autoscale max instances: 
+        while num_CVM_running < autoscale_max_instances: 
             #Check Autoscale History for Hax & Min conatiners created for same policy
             #get_autoscale_policy="select COUNT (new containerid) from vic_autoscale history where policy rule applied and container statuss
             #read autoscale_history.execute(get_autoscale_policy, (autoscale service name, "running",))
@@ -261,32 +260,32 @@ for x in autoscale_request:
 
             filter_label="vic_service_name" + autoscale_service_name
             container_list_array = docker api.containers (filters={"label": (filter label) }) 
-            num_cVM running len (container_list_array)
+            num_cVM running = len(container_list_array)
 
-            if num_eVM running < autoscale_max_instances:
-                container docker cli.containers.run(container_image,network=docker_network,labels=docker_labels,detach=True)
+            if num_cVM_running < autoscale_max_instances:
+                container = docker.cli.containers.run(container_image,network=docker_network,labels=docker_labels,detach=True)
                 container.reload()
                 ip=container.attrs("NetworkSettings"] ["Networks"] [docker network] ["IPAddress"] ## Insert the record in Autoscale History
                 add request("INSERT INTO vic_autoscale_history " "(remote_docker_name,containerod,policy_rule_applied,cpu_spike,container_status,service_name)"
                 "VALUE (%s,%s,%s,%s,%s,%s)")
                 add data = (remote_docker Name, container.id, policy_name, str (total_cpu usage). "running", autoscale_service_name]
                 cursor execute (add request, add data)
-                cnx.commut()
+                cnx.commit()
 
                 search_autoscale request = request id 
                 updated_autoscale_status="set": {"Alert Status":"processed"}}
                 db.autoscale_request.update_one(search_autoacale_request, updated_autoscale_status)
             else:
                 search_autoscale_request = request_id
-                updated autoacale status-("set":"Alert Status":"skipped"} 
-                db.autoscale request.update_one (search_autoscale_request, updated autoscale
+                updated autoacale status = ("set":"Alert Status":"skipped"} 
+                db.autoscale = request.update_one (search_autoscale_request, updated autoscale
 
         ###===============Policy Type: Scale Down=============
 
         ##Take the win, max dynamically. Based on if condiditon of stats
         ##Do the docker inspect using API to search for other scaled container based on label search, get container id and delete
 
-        if autoscale action scale_down":
+        if autoscale_action = scale_down":
             #filter label-vic service name + autoscale service name
             #container list array docker apt. containera (filters-("label": (filter_label))) 
             #num CVM running len (container list array)
@@ -298,31 +297,31 @@ for x in autoscale_request:
                 #autoscale history-read autoscale_history.fetchone () 
                 #no_of_instances running autoscale history [0]
 
-                filter_label="vic service name-" + autoscale_service_name
+                filter_label="vic_service_name-" + autoscale_service_name
                 container_list_array = docker_api.containers (filters ("label": (filter label)), all=True)
-                num_CVM_running len(container_list_array)
-                scaledown_containerid = container list_array[0]['Id']
+                num_CVM_running = len(container_list_array)
+                scaledown_containerid = container_list_array[0]['Id']
 
                 #get_scaledown_containerid="select new_containerid from vic_autoscale_history where policy rule applied ts and container_statuss" 
                 #read scaledown containerid.execute iger scaledown_containerid, (autoscale service name, "running",))
 
 
-                if num_cVM running autoscale_min_instances:
-                    docker aps.remove_container (scaledown containerid, v-False, force=True)
+                if num_cVM running < autoscale_min_instances:
+                    docker_api.remove_container(containerid, force=True)
                     # Update the record in Autoscale History for Scale Down Tracking 
-                    update_requeat=("UPDATE vic autoscale history SET container status ta, cpu_spikes WHERE containerids and service_name = %s ")
-                    update_data("deleted",atr (total cpu usage), str(scaledown_containerid), autoscale_service_name)
+                    update_requeat=("UPDATE vic_autoscale_history SET container_status=True, cpu_spikes WHERE containerids and service_name = %s ")
+                    update_data("deleted",str(total cpu usage), str(scaledown_containerid), autoscale_service_name)
                     cursor.execute(update_request, update_data)
                     cnx.commit()
 
-                    search autoacale request request id 
+                    search autoacale_request = request id 
                     updated autoscale_statua("update":("Alert Status":"processed"))
-                    db.autoscale request, update one (search autoscale_requeat, updated_autoscale_status)
+                    db.autoscale = request.update_one(search_autoscale_request, updated_autoscale_status)
 
                 else:
                     search autoacale request request id
                     updated = autoacale_status-("update": ("Alert Status":"akipped"))
-                    db.autoscale request.update one (search autoscale request, updated_autoscale_status)
+                    db.autoscale = request.update_one(search autoscale request, updated_autoscale_status)
 
 #=========================================================
 # Policy Type: Dynamic Load Balancer (HAProxy, Nginx or Traefik). Once application is scale upscale down, check how to connect to load balancer. 
@@ -339,64 +338,66 @@ for x in autoscale_request:
 
 #=====================================Traefik: Load Balancer Scale Up
 
-    if autoscale action "acale_up_node" or autoscale action "acale up service":
-        filter_label="vic_service_name" + alert service_name 
-        container_list_array = docker api.containers (filters-("label": (filter_label} })
+    if autoscale_action = "scale_up_node" or autoscale_action "scale_up_service":
+        filter_label="vic_service_name" + alert_service_name 
+        container_list_array = docker_api.containers(filters("label": (filter_label} })
         #Count No of recorda
-        num CVM len(container_list_array)
+        num_CVM = len(container_list_array)
 
         ##Inspect the container to get the Docker Label, cpu, memory, volume details required for docker run commands 
         container_id = container_list_array[0]['Id']
-        container_inspect = docker_api.inspect_container (container_id) container image container inspect['Config']['Image')
-        docker_labels = container_inspect['Config']['Labels') I
+        container_inspect = docker_api.inspect_container(container_id) 
+        container_image = container_inspect['Config']['Image']
+        docker_labels = container_inspect['Config']['Labels'] I
 
         #Based on number of container with that service name scale up and scale down 
         
-        while num VM < autoscale max instances:
-            container 11st array docker api.containers (filters="label": (filter label)))
-            num CVM = len (container list array)
-            if num cVM < autoscale max instances: 
-                if vid naming convention "No":
+        while num_VM < autoscale_max_instances:
+            container_array = docker_api.containers(filters="label": (filter label)))
+            num_CVM = len(container_list_array)
+            if num_cVM < autoscale_max_instances: 
+                if vic_naming_convention = "No":
                     auto numatr(uuid.uuids())
                     auto_num= auto num. replace ("-","")
                     auto_num= auto_num(0:12)
-                    CVM Name vic naming convention + auto_num
+                    CVM_Name = vic_naming_convention + auto_num
                     container = docker_cli.containers.run (container image, network-remote_docker Network,labels=docker_labels, name=cVM_Name, tty=True, detac=True)
                     container.reload()
                 else:
-                    container docker cli.containers.run (container_image, network-remote_docker Network, labels-docker labels, tty-True, detach=True) 
-                    container,reload()
-                ip-container.attrs ["NetworkSettings"] ["Networks"][remote_docker_Network] ["IPAddress"]          
+                    container = docker.cli.containers.run (container_image, network-remote_docker Network, labels-docker labels, tty-True, detach=True) 
+                    container.reload()
+                    ip = container.attrs["NetworkSettings"]["Networks"]["remote_docker_Network"]["IPAddress"]          
                 # Insert the record in Autoscale History
 
                 add_request ("INSERT INTO vic_autoscale_history" (remote_docker name, containerid, policy rule_applied,container_status,service_name)" 
                 "VALUES (%s,%s,%s,%s)")
 
-                add data (remote_docker_Name, container.id,policy_name, "running", alert_service_name)
-                cursor.execute (add_request, add data)
+                add_data(remote_docker_Name, container.id,policy_name, "running", alert_service_name)
+                cursor.execute(add_request, add data)
                 cnx.commit()
 
-                search autoscale_request = request_id
-                updated autoscale_status-("set": ("Alert Status":"processed")) db.autoscale_request.update one (search_autoscale_request, updated autoscale_status)
+                search_autoscale_request = request_id
+                updated_autoscale_status-("set": ("Alert Status":"processed")) db.autoscale_request.update one (search_autoscale_request, updated autoscale_status)
 
             else:
-                search autoscale_request request_id 
-                updated autoscale_status-("Caet": ("Alert Status":"akipped"))
-                db.autoscale_request.update one (search_autoscale_request, updated autoscale_status)
+                search_autoscale_request(request_id) 
+                updated_autoscale_status = ("set":("Alert Status":"akipped"))
+                db.autoscale_request.update_one(search_autoscale_request, updated_autoscale_status)
 
 
 #============================Traefik: Load balancer Scale Down================
 
-    if autoscate action "scale_down node or autoscale action "scale down service":
-        filter_label-vic_service_name+ alert service name
-        container_list_array = docker api.containers (Eilters-("label": (filter_label) }) #Count No of records
+    if autoscate action = "scale_down_node" or autoscale_action = "scale_down_service":
+        filter_label = vic_service_name+ alert service name
+        container_list_array = docker_api.containers (Filters("label": (filter_label)) #Count No of records
 
         num CVM = len (container_list_array)
         num CVM = 10000
         
-        while num cVN> autoscale min instances: container_list array docker_api.containera (filters-("label":
-        num_CVM len(container_list_array)
-        scaledown_containerid = container_list_array [0] ['Id']
+        while num_cVM> autoscale min instances: 
+         container_list array docker_api.containera (filters("label":(filter_label))
+         num_CVM = len(container_list_array)
+         scaledown_containerid = container_list_array [0]['Id']
 
         if num CVM > autoscale min instances:
             docker api remove container (scaledown containerid, v=False, force=True)
