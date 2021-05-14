@@ -292,16 +292,16 @@ for x in autoscale_request:
             #num CVM running len (container list array)
             #num CVM running = 200
 
-            while num cVH running > autoacale min instances:
+            while num_cVM_running > autoacale_min_instances:
                 #get_autoacale_policy"select COUNT (new_containerid) from vic autoscale history where policy rule applied is and container status "
                 #read autoscale_history.execute (get_autoscale policy, (autoscale_service_name, "running",))
                 #autoscale history-read autoscale_history.fetchone () 
                 #no_of_instances running autoscale history [0]
 
-                filter_label="vic service name-" + autoscale service name
-                container_list array = docker api.containers (filters-("label": (filter label)), all=True)
-                num CVM running len(container list_array)
-                scaledown containerid container list_array[0]['Id']
+                filter_label="vic service name-" + autoscale_service_name
+                container_list_array = docker_api.containers (filters ("label": (filter label)), all=True)
+                num_CVM_running len(container_list_array)
+                scaledown_containerid = container list_array[0]['Id']
 
                 #get_scaledown_containerid="select new_containerid from vic_autoscale_history where policy rule applied ts and container_statuss" 
                 #read scaledown containerid.execute iger scaledown_containerid, (autoscale service name, "running",))
@@ -312,16 +312,16 @@ for x in autoscale_request:
                     # Update the record in Autoscale History for Scale Down Tracking 
                     update_requeat=("UPDATE vic autoscale history SET container status ta, cpu_spikes WHERE containerids and service_name = %s ")
                     update_data("deleted",atr (total cpu usage), str(scaledown_containerid), autoscale_service_name)
-                    cursor.execute(update request, update data)
+                    cursor.execute(update_request, update_data)
                     cnx.commit()
 
                     search autoacale request request id 
-                    updated autoscale atatua("Saet":("Alert Status":"processed"))
+                    updated autoscale_statua("update":("Alert Status":"processed"))
                     db.autoscale request, update one (search autoscale_requeat, updated_autoscale_status)
 
                 else:
                     search autoacale request request id
-                    updated autoacale status-("Saet": ("Alert Status":"akipped"))
+                    updated = autoacale_status-("update": ("Alert Status":"akipped"))
                     db.autoscale request.update one (search autoscale request, updated_autoscale_status)
 
 #=========================================================
