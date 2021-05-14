@@ -1,6 +1,8 @@
-Medium Article Link: https://aviratna.medium.com/autoscaling-ingress-dynamic-load-balancer-7ed03cccdd04
 
 # Autoscaling
+
+Medium Article Link: https://aviratna.medium.com/autoscaling-ingress-dynamic-load-balancer-7ed03cccdd04
+
 Autoscaling for opensource container platform.
 
 It can be used as an extension for opensource kubernetes autoscaling and Ingress. 
