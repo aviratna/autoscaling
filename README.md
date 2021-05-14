@@ -1,7 +1,7 @@
 
 # Autoscaling
 
-Medium Article Link: https://aviratna.medium.com/autoscaling-ingress-dynamic-load-balancer-7ed03cccdd04
+**Medium Article Link**: https://aviratna.medium.com/autoscaling-ingress-dynamic-load-balancer-7ed03cccdd04
 
 Autoscaling for opensource container platform.
 
