@@ -151,7 +151,7 @@ for x in autoscale_request:
     
     
     #Get the remote_docker details
-    get_remote_docker_list = select remote_docker_Name, remote_docker Network, remote_docker Port, LOB, AppCode, PCCode, CVM Storage from container_remote_docker_info where remote_docker_Name = remote_docker
+    get_remote_docker_list = select remote_docker_Name, remote_docker Network, remote_docker Port, LOB, AppCode, PCCode, container Storage from container_remote_docker_info where remote_docker_Name = remote_docker
     readremote_dockerinfo.execute (get_remote_docker list, (remote_docker Name,))
     remote_dockerinfo=readremote_dockerinfo.fetchone ()
 
@@ -260,7 +260,7 @@ for x in autoscale_request:
 
             filter_label="container_service_name" + autoscale_service_name
             container_list_array = docker api.containers (filters={"label": (filter label) }) 
-            num_cVM running = len(container_list_array)
+            num_container running = len(container_list_array)
 
             if num_container_running < autoscale_max_instances:
                 container = docker.cli.containers.run(container_image,network=docker_network,labels=docker_labels,detach=True)
@@ -288,8 +288,8 @@ for x in autoscale_request:
         if autoscale_action = scale_down":
             #filter label-container service name + autoscale service name
             #container list array docker apt. containera (filters-("label": (filter_label))) 
-            #num CVM running len (container list array)
-            #num CVM running = 200
+            #num container running len (container list array)
+            #num container running = 200
 
             while num_container_running > autoacale_min_instances:
                 #get_autoacale_policy"select COUNT (new_containerid) from container autoscale history where policy rule applied is and container status "
@@ -306,7 +306,7 @@ for x in autoscale_request:
                 #read scaledown containerid.execute iger scaledown_containerid, (autoscale service name, "running",))
 
 
-                if num_cVM running < autoscale_min_instances:
+                if num_container running < autoscale_min_instances:
                     docker_api.remove_container(containerid, force=True)
                     # Update the record in Autoscale History for Scale Down Tracking 
                     update_requeat=("UPDATE container_autoscale_history SET container_status=True, cpu_spikes WHERE containerids and service_name = %s ")
@@ -342,7 +342,7 @@ for x in autoscale_request:
         filter_label="container_service_name" + alert_service_name 
         container_list_array = docker_api.containers(filters("label": (filter_label} })
         #Count No of recorda
-        num_CVM = len(container_list_array)
+        num_container = len(container_list_array)
 
         ##Inspect the container to get the Docker Label, cpu, memory, volume details required for docker run commands 
         container_id = container_list_array[0]['Id']
@@ -354,8 +354,8 @@ for x in autoscale_request:
         
         while num_VM < autoscale_max_instances:
             container_array = docker_api.containers(filters="label": (filter label)))
-            num_CVM = len(container_list_array)
-            if num_cVM < autoscale_max_instances: 
+            num_container = len(container_list_array)
+            if num_container < autoscale_max_instances: 
                 if container_naming_convention = "No":
                     auto numatr(uuid.uuids())
                     auto_num= auto num. replace ("-","")
@@ -391,15 +391,15 @@ for x in autoscale_request:
         filter_label = container_service_name+ alert service name
         container_list_array = docker_api.containers (Filters("label": (filter_label)) #Count No of records
 
-        num CVM = len (container_list_array)
-        num CVM = 10000
+        num container = len (container_list_array)
+        num container = 10000
         
-        while num_cVM> autoscale min instances: 
+        while num_container> autoscale min instances: 
          container_list array docker_api.containera (filters("label":(filter_label))
-         num_CVM = len(container_list_array)
+         num_container = len(container_list_array)
          scaledown_containerid = container_list_array [0]['Id']
 
-        if num CVM > autoscale min instances:
+        if num container > autoscale min instances:
             docker api remove container (scaledown containerid, v=False, force=True)
             update_request={"UPDATE container_autoscale history SET container_statuss WHERE containerid=5 and policy rule_applied = is ") cursor.execute (update_request, update_data)
             update data = ("deleted", str (scaledown_containerid),policy_name)
@@ -420,7 +420,7 @@ for x in autoscale_request:
         container_list_array = docker_api.containers(filters=["label": (filter_label)))
 
         #Count No of records
-        num_cVM = len(container_list_array)
+        num_container = len(container_list_array)
 
         #Inspect the container to get the Docker Label, cpu, memory, volume details required for docker run commands
         container_id container list array[0]['Id']
@@ -437,17 +437,17 @@ for x in autoscale_request:
 
         container_haproxy_backend_app_port-int (container_haproxy_backend_app_port)
 
-        num_cvm = 0
+        num_container = 0
 
         #based on number of container with that service name scale up and scale down
 
-        while num CVM < autoscale_max instances: 
+        while num container < autoscale_max instances: 
             filter lalert-container service name="+ alert service name
             container_list array = docker api.containers (filters-("label": (filter_label) })
-            num CVM running len (container list_array) 
-            haproxy_node_count = num CVM running+1
+            num container running len (container list_array) 
+            haproxy_node_count = num container running+1
             
-            if num cVM running < autoscale max_instances:
+            if num container running < autoscale max_instances:
                 container docker cli.containers.run(container_image, network-remote_docker Network, labels=docker_labels, detach-True)
                 container.reload() 
                 ip = container.attra("NetworkSettings" ["Networks"][remote_docker Network) ["IPAddress"]
